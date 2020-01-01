@@ -1,25 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+    "name": "Partage React",
+    "short_name": "partage",
+    "theme_color": "#1c87dd",
+    "background_color": "#2196f3",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "natural",
+    "icons": [
+        {
+            "src": "icons/icon250.png",
+            "sizes": "250x250",
+            "type": "image\/png"
+        },
+        {
+            "src": "icons/icon500.png",
+            "sizes": "500x500",
+            "type": "image\/png"
+        }
+    ]
 }
