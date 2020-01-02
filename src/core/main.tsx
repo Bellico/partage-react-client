@@ -1,59 +1,58 @@
 import React from 'react';
-import { NoteTypeComponent } from 'elements-types/note-type/note-type.component';
-import { Presenter } from 'core/home-presenter-type';
+import { GetCompontentByContentType as GetComponentByContentType } from 'helpers/content-type.helper';
 
-export const Main = () => (
-    <main>
-        <section className="hero is-large is-light">
-            <div className="hero-body">
-                <div className="container">
-                    <NoteTypeComponent />
-                </div>
-            </div>
-        </section>
+export function Main() {
 
-        <section className="hero is-medium is-danger is-bold">
-            <div className="hero-body">
-                <div className="container">
-                    <div className="columns">
-                        <div className="column">
-                            <Presenter elementType={NoteTypeComponent.elementType} />
+    const contentTypeList = [
+        {
+            id: 1,
+            color: 'light',
+            type: 'note',
+        },
+        {
+            id: 2,
+            color: 'danger',
+            type: 'note',
+        },
+        {
+            id: 3,
+            color: 'dark',
+            type: 'note',
+        },
+        {
+            id: 4,
+            color: 'black',
+            type: 'note',
+        },
+        {
+            id: 5,
+            color: 'light',
+            type: 'note',
+        }
+    ]
+
+    return (
+        <main>
+            {contentTypeList.map((contentType) =>
+                <section key={contentType.id} className={`hero is-large is-${contentType.color} is-bold`}>
+                    <div className="hero-body">
+                        <div className="container">
+                            <div className="columns">
+                                <div className="column">
+                                    <div className="has-text-centered">
+                                        <h2 className="title">Note Content type</h2>
+                                        <p className="subtitle">Enter some texte to share a note</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="columns">
+                                <div className="column">
+                                    {GetComponentByContentType(contentType.type)}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="columns"></div>
-                    <div className="columns">
-                        <div className="column">
-                            <NoteTypeComponent />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section className="hero is-large is-dark">
-            <div className="hero-body">
-                <div className="container">
-                    <NoteTypeComponent />
-                </div>
-            </div>
-        </section>
-
-        <section className="hero is-large is-black">
-            <div className="hero-body">
-                <div className="container">
-                    <NoteTypeComponent />
-                </div>
-            </div>
-        </section>
-
-        <section className="hero is-large is-light">
-            <div className="hero-body">
-                <div className="container">
-                    <NoteTypeComponent />
-                </div>
-            </div>
-        </section>
-
-    </main>
-);
+                </section>)}
+        </main>
+    )
+}
