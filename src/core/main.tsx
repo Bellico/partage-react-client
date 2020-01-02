@@ -12,12 +12,21 @@ export const Main = () => (
             </div>
         </section>
 
-        <section className="hero is-large is-danger">
+        <section className="hero is-medium is-danger is-bold">
             <div className="hero-body">
                 <div className="container">
-                    <Presenter elementType={NoteTypeComponent.elementType}>
-                        <NoteTypeComponent />
-                    </Presenter>
+                    <div className="columns">
+                        <div className="column">
+                            <Presenter elementType={NoteTypeComponent.elementType} />
+                        </div>
+                    </div>
+                    <div className="columns"></div>
+                    <div className="columns">
+                        <div className="column">
+                            <NoteTypeComponent />
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

@@ -34,6 +34,13 @@ export class NoteTypeComponent extends React.Component<{}, { value: string }>
         return (
             <form>
                 <div className="field">
+                    <label className="label">Name</label>
+                    <div className="control">
+                        <input className="input is-medium" type="text" placeholder="Text input" />
+                    </div>
+                </div>
+
+                <div className="field">
                     <div className="control">
                         <textarea className="textarea is-large"
                             placeholder="Enter a note"
