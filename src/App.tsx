@@ -5,13 +5,13 @@ import {
     Route,
     Redirect
 } from 'react-router-dom';
-import { Home } from 'core/home';
+import { HomePage } from 'core/home-page';
 
 export const App = () => (
     <Router>
         <Switch>
             <Route exact path="/">
-                <Home />
+                <HomePage />
             </Route>
 
             <Route path="/hello">

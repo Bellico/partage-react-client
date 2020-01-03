@@ -28,6 +28,10 @@ $primary-invert: $pink-invert;
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+
 $black: #0a0a0a;
 $dark: #111;
 $light : #fdfdfd;
@@ -37,9 +41,12 @@ $primary: #ed1543;
 $navbar-item-color: #fff !important;
 $footer-background-color: #f1f3f3;
 
-
 .hero.is-danger .label, .hero.is-dark .label, .hero.is-black .label{
   color: $white;
 } 
 
-@import "../node_modules/bulma/bulma";
+.icon.action i{
+  cursor: pointer;
+}
+
+@import "../node_modules/bulma/bulma"; 

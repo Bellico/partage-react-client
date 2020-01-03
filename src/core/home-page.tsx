@@ -1,12 +1,12 @@
 import React from 'react';
 import { Header } from './header';
-import { Main } from './main';
+import { ContentTypeListComponent } from './content-type-list-component';
 import { Footer } from './footer';
 
-export const Home = () => (
+export const HomePage = () => (
     <>
         <Header />
-        <Main />
+        <ContentTypeListComponent />
         <Footer />
     </>
 );
