@@ -1,7 +1,7 @@
 import React from 'react';
 import { debounce } from 'lodash-es';
 
-export class NoteContentTypeComponent extends React.Component<{}, { title: string, note: string }>
+export class NoteContentType extends React.Component<{}, { title: string, note: string }>
 {
     emitChangeDebounced = debounce(this.emitChange, 300);
 
@@ -33,7 +33,7 @@ export class NoteContentTypeComponent extends React.Component<{}, { title: strin
         return (
             <form>
                 <div className="field">
-                    <label className="label">Name</label>
+                    <label className="label">Title</label>
                     <div className="control">
                         <input
                             className="input is-medium"
