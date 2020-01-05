@@ -5,7 +5,7 @@ export class NoteContentType extends React.Component<{}, { title: string, note: 
 {
     emitChangeDebounced = debounce(this.emitChange, 300);
 
-    constructor(props: any) {
+    constructor(props) {
         super(props);
         this.state = {
             note: '',
@@ -13,7 +13,7 @@ export class NoteContentType extends React.Component<{}, { title: string, note: 
         };
     }
 
-    handleChange = (event: any) => {
+    handleChange = (event) => {
         const { name, value } = event.target;
         this.emitChangeDebounced(name, value);
     }

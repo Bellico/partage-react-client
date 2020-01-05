@@ -5,7 +5,7 @@ export const Footer = () => (
         <div className="container">
             <div className="columns">
                 <div className="column">
-                    <p>Partage App in React</p>
+                    <p className="has-text-grey-light">Partage App in React</p>
                 </div>
             </div>
         </div>

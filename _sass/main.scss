@@ -34,14 +34,18 @@ $primary-invert: $pink-invert;
 
 $black: #0a0a0a;
 $dark: #111;
-$light : #fdfdfd;
+$light : #f5f5f5;
 $danger: #ed1543;
 $primary: #ed1543;
 
 $navbar-item-color: #fff !important;
 $footer-background-color: #f1f3f3;
 
-.hero.is-danger .label, .hero.is-dark .label, .hero.is-black .label{
+$custom-colors: ("green": $turquoise);
+
+@import "../node_modules/bulma/bulma";
+
+.hero.is-danger .label, .hero.is-dark .label, .hero.is-black .label, .hero.is-green .label{
   color: $white;
 }
 
@@ -49,4 +53,11 @@ $footer-background-color: #f1f3f3;
   cursor: pointer;
 }
 
-@import "../node_modules/bulma/bulma";
+.level-item > * {
+  margin-left: 1rem;
+}
+
+.level-item .field {
+  margin-bottom: 0;
+}
+

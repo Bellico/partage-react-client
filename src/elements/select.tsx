@@ -1,11 +1,28 @@
 import React from 'react';
 import { Icon } from 'elements/icon';
+import { firstLetterCapitalize } from 'helpers/string.helper';
+
+export class OptionModel {
+    key: any;
+    value: string
+
+    constructor(value: string, key?: any) {
+        this.value = firstLetterCapitalize(value);
+        this.key = key;
+
+        if (!key) {
+            this.key = value;
+        }
+    }
+}
 
 export class Select extends React.Component<{
-    options: any[],
+    options: OptionModel[],
     onChange: (value: any) => void,
+    label: string
     value?: any,
     icon?: string
+    style?: { color?: string, size?: string }
 },
     { value: any }> {
 
@@ -22,15 +39,26 @@ export class Select extends React.Component<{
             <Icon className="is-left">{this.props.icon}</Icon> : null;
     }
 
+    get style() {
+        if (!this.props.style) {
+            return '';
+        }
+
+        return Object.values(this.props.style).map(s => 'is-' + s).reduce((a, b) => a + ' ' + b);
+    }
+
     render() {
         return (
-            <div className={`control ${this.props.icon ? 'has-icons-left' : ''}`}>
-                <div className="select">
-                    <select value={this.props.value} onChange={this.handleChange}>
-                        {this.props.options.map(o => <option key={o}>{o}</option>)}
-                    </select>
+            <div className="field">
+                <label className="label">{this.props.label}</label>
+                <div className={`control ${this.props.icon ? 'has-icons-left' : ''}`}>
+                    <div className={`select ${this.style}`}>
+                        <select value={this.props.value} onChange={this.handleChange}>
+                            {this.props.options.map(o => <option key={o.key} value={o.key}>{o.value}</option>)}
+                        </select>
+                    </div>
+                    {this.icon}
                 </div>
-                {this.icon}
             </div>
         );
     }
