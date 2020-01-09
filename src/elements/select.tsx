@@ -1,13 +1,13 @@
 import React from 'react';
 import { Icon } from 'elements/icon';
-import { firstLetterCapitalize } from 'helpers/string.helper';
+import { capitalize } from 'lodash-es';
 
 export class OptionModel {
     key: any;
     value: string
 
     constructor(value: string, key?: any) {
-        this.value = firstLetterCapitalize(value);
+        this.value = capitalize(value);
         this.key = key;
 
         if (!key) {

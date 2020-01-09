@@ -6,10 +6,10 @@ import { PictureContentType } from 'content-types/picture-content-type/picture-c
 import { LinkContentType } from 'content-types/link-content-type/link-content-type';
 import { CarouselContentType } from 'content-types/carousel-content-type/carousel-content-type';
 
-export function getContentTypeByTypeName(typeName: string) {
+export function getContentTypeByTypeName(typeName: string, value: any) {
     switch (typeName) {
         case 'note':
-            return <NoteContentType />;
+            return <NoteContentType value={value} />;
         case 'todo':
             return <TodoContentType />;
         case 'picture':

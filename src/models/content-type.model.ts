@@ -4,4 +4,5 @@ export class ContentTypeModel {
   colorName: string;
   size: string
   typeName: string;
+  value: any;
 }

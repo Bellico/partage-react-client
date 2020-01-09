@@ -5,74 +5,33 @@ import { AddingContentSection } from 'core/adding-content-section';
 import { Icon } from 'elements/icon';
 import { Select, OptionModel } from 'elements/select';
 import { NavLink } from 'react-router-dom';
+import { ContentTypeContext } from 'context/content-type.context';
 
-export class ContentTypesList extends React.Component<{}, { items: ContentTypeModel[], configurationDisplayedFor: number[] }> {
+export class ContentTypesList extends React.Component<{}, { configurationDisplayedFor: number[] }> {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            configurationDisplayedFor: [],
-            items: [
-                {
-                    id: 1,
-                    colorName: 'light',
-                    typeName: 'note',
-                    size: 'medium'
-                },
-                {
-                    id: 2,
-                    colorName: 'danger',
-                    typeName: 'note',
-                    size: 'medium'
-                },
-                {
-                    id: 3,
-                    colorName: 'dark',
-                    typeName: 'note',
-                    size: 'medium'
-                },
-                {
-                    id: 4,
-                    colorName: 'black',
-                    typeName: 'todo',
-                    size: 'medium'
-                },
-                {
-                    id: 5,
-                    colorName: 'light',
-                    typeName: 'link',
-                    size: 'medium'
-                }
-            ]
-        }
+    static contextType = ContentTypeContext;
+    context: React.ContextType<typeof ContentTypeContext>;
+    state = {
+        configurationDisplayedFor: [],
+    }
+
+    //#region ContentTypeContext
+    get contentTypeItems(): ContentTypeModel[] {
+        return this.context.items;
     }
 
     addContentTypeItem = () => {
-        this.setState({
-            items: [...this.state.items, {
-                id: 5,
-                colorName: 'light',
-                typeName: 'note',
-                size: 'medium'
-            }]
-        });
+        this.context.addItem();
     }
 
     deleteContentTypeItem(indexItem: number) {
-        this.setState((state) => {
-            state.items.splice(indexItem, 1);
-
-            return { items: state.items }
-        });
+        this.context.deleteItem(indexItem);
     }
 
     changePropertyContentTypeItem(indexItem: number, propertyName: string, valueName: string) {
-        this.setState((state) => {
-            state.items[indexItem][propertyName] = valueName;
-
-            return { items: state.items }
-        });
+        this.context.changePropertyItem(indexItem, propertyName, valueName);
     }
+    //#endregion
 
     toggleConfigurationDisplayedFor(indexItem: number) {
         if (this.isConfigurationDisplayedFor(indexItem)) {
@@ -93,8 +52,8 @@ export class ContentTypesList extends React.Component<{}, { items: ContentTypeMo
         return this.state.configurationDisplayedFor.filter(c => c === index).length > 0;
     }
 
-    getContentType(typeName: string) {
-        return getContentTypeByTypeName(typeName)
+    getContentType(item: ContentTypeModel) {
+        return getContentTypeByTypeName(item.typeName, item.value)
     }
 
     getHeaderSection(index: number, item: ContentTypeModel): React.ReactNode {
@@ -159,14 +118,14 @@ export class ContentTypesList extends React.Component<{}, { items: ContentTypeMo
     render() {
         return (
             <main>
-                {this.state.items.map((contentType, index) =>
+                {this.contentTypeItems.map((contentType, index) =>
                     <section key={index} className={`section hero is-${contentType.size} is-${contentType.colorName}`}>
                         <div className="hero-head">
                             {this.getHeaderSection(index, contentType)}
                         </div>
                         <div className="hero-body">
                             <div className="container">
-                                {this.getContentType(contentType.typeName)}
+                                {this.getContentType(contentType)}
                             </div>
                         </div>
                     </section>)

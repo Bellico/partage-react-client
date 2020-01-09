@@ -1,15 +1,20 @@
 import React from 'react';
 import { debounce } from 'lodash-es';
 
-export class NoteContentType extends React.Component<{}, { title: string, note: string }>
+interface INoteContentTypeValue {
+    title: string,
+    note: string
+}
+
+export class NoteContentType extends React.Component<{ value: INoteContentTypeValue }, INoteContentTypeValue>
 {
     emitChangeDebounced = debounce(this.emitChange, 300);
 
     constructor(props) {
         super(props);
         this.state = {
-            note: '',
-            title: ''
+            title: this.props.value?.title,
+            note: this.props.value?.note
         };
     }
 
