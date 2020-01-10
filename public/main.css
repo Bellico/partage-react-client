@@ -11796,6 +11796,85 @@ label.panel-block {
   background-color: #f1f3f3;
   padding: 3rem 1.5rem 6rem; }
 
+label.is-checkbox {
+  background: #3273dc;
+  border: 1px solid transparent;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  margin-right: 0.5em;
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  label.is-checkbox.is-primary {
+    background: #ed1543; }
+  label.is-checkbox.is-info {
+    background: #3298dc; }
+  label.is-checkbox.is-danger {
+    background: #ed1543; }
+  label.is-checkbox.is-warning {
+    background: #ffdd57;
+    color: #4a4a4a; }
+    label.is-checkbox.is-warning .checkmark:before {
+      background: rgba(245, 245, 245, 0.8); }
+  label.is-checkbox.is-success {
+    background: #48c774; }
+  label.is-checkbox.is-static {
+    background-color: whitesmoke;
+    border-color: #dbdbdb;
+    color: #7a7a7a;
+    box-shadow: none;
+    pointer-events: none; }
+    label.is-checkbox.is-static .checkmark:before {
+      background: rgba(122, 122, 122, 0.3); }
+  label.is-checkbox.is-primary {
+    background: #ed1543; }
+  label.is-checkbox .checkmark {
+    color: transparent;
+    position: relative; }
+    label.is-checkbox .checkmark i {
+      z-index: 1; }
+    label.is-checkbox .checkmark:before {
+      content: '';
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 0;
+      border-radius: 2px;
+      background: rgba(17, 17, 17, 0.3);
+      border: 1px solid rgba(17, 17, 17, 0.2); }
+  label.is-checkbox input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+    cursor: pointer; }
+    label.is-checkbox input[type="checkbox"]:checked ~ .checkmark {
+      color: inherit; }
+  label.is-checkbox.is-rounded {
+    border-radius: 9999px; }
+    label.is-checkbox.is-rounded .checkmark:before {
+      border-radius: 9999px; }
+  label.is-checkbox:hover {
+    box-shadow: inset 0px 0px 9999px rgba(0, 0, 0, 0.05); }
+  label.is-checkbox:active {
+    box-shadow: inset 0px 0px 9999px rgba(0, 0, 0, 0.1); }
+  label.is-checkbox.is-small {
+    border-radius: 2px;
+    font-size: 0.75rem; }
+  label.is-checkbox.is-medium {
+    font-size: 1.25rem; }
+  label.is-checkbox.is-large {
+    font-size: 1.5rem; }
+  label.is-checkbox .icon, label.is-checkbox .icon.is-small, label.is-checkbox .icon.is-medium, label.is-checkbox .icon.is-large {
+    height: 1.5em;
+    width: 1.5em; }
+
 .hero.is-danger .label, .hero.is-dark .label, .hero.is-black .label, .hero.is-green .label {
   color: white; }
 

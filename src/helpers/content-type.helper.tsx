@@ -11,7 +11,7 @@ export function getContentTypeByTypeName(typeName: string, value: any) {
         case 'note':
             return <NoteContentType value={value} />;
         case 'todo':
-            return <TodoContentType />;
+            return <TodoContentType tasks={[]} />;
         case 'picture':
             return <PictureContentType />;
         case 'link':

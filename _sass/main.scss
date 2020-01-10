@@ -44,6 +44,7 @@ $footer-background-color: #f1f3f3;
 $custom-colors: ("green": $turquoise);
 
 @import "../node_modules/bulma/bulma";
+@import "checkbox.scss";
 
 .hero.is-danger .label, .hero.is-dark .label, .hero.is-black .label, .hero.is-green .label{
   color: $white;
