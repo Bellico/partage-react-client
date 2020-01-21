@@ -1,34 +1,25 @@
-import React from 'react';
-// import { Header } from './header';
-// import { ContentTypesList } from './content-types-list';
-// import { Footer } from './footer';
-// import { useParams } from 'react-router-dom';
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
+import { Menu } from './menu';
+import { TodoBlocks } from 'content-types/todo-content-type/todo-blocks';
 
-// export const ContentTypeFullPage: FunctionComponent = () => {
+const WorkContainer = styled.div`
+    background: #f4f6f8;
+    min-height: 100vh;     
+    display: flex;
+    color: #333;
 
-
-//     //  const id = useParams();
-
-
-//     const id = useParams();
-//     console.log(id);
-
-//     return (<>
-
-//         <Footer />
-//     </>);
-
-// }
-
-export class ContentTypeFullPage extends React.Component<any> {
-
-    componentDidMount() {
-        console.log(this.context);
-        const { match } = this.props;
-        console.log(match);
-
+    main{
+        flex: auto;
+        padding: 2em;
     }
-    render() {
-        return <h1>Gello</h1>
-    }
-}
+`;
+
+export const ContentTypeFullPage: FunctionComponent = () => (
+    <WorkContainer>
+        <Menu />
+        <main>
+            <TodoBlocks />
+        </main>
+    </WorkContainer>
+)

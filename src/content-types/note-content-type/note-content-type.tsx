@@ -36,7 +36,7 @@ export class NoteContentType extends React.Component<{ value: INoteContentTypeVa
 
     render() {
         return (
-            <form>
+            <form onSubmit={(event) => event.preventDefault()}>
                 <div className="field">
                     <label className="label">Title</label>
                     <div className="control">

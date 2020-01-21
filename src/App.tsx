@@ -59,10 +59,9 @@ export const App = () => {
 
     return (
         < Router >
-            <Navbar />
-
             <Switch>
                 <Route exact path="/">
+                    <Navbar />
                     <ContentTypeContext.Provider value={provider}>
                         <HomePage />
                     </ContentTypeContext.Provider>
