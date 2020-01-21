@@ -1,12 +1,6 @@
 import React from 'react';
 import { Icon } from 'elements/icon';
-import { Task } from './task.model';
-
-enum StatusEnum {
-    All = 'All',
-    Active = 'Active',
-    Completed = 'Completed'
-};
+import { Task, StatusEnum } from './task.model';
 
 export class TodoContentType extends React.Component<{ tasks: Task[] }, {
     tasks: Task[],
