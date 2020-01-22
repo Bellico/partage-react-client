@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { Icon } from 'elements/icon';
 import { Task, StatusEnum } from './todo.model';
+import styled from 'styled-components';
 
 interface ITodoProps {
     tasks: Task[]
@@ -12,6 +13,10 @@ interface ITodoState {
     filterOnStatus: StatusEnum
 }
 
+const PanelHeading = styled.div`
+    background: #474747;
+    color: #fff;
+`
 export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
 
     state = {
@@ -74,11 +79,12 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
 
     render() {
         return (
-            <article className="panel is-primary">
-                <p className="panel-heading">
+            <article className="panel">
+                <PanelHeading className="panel-heading">
                     Todos List
-                    </p>
-
+                    <Icon>pen fa-xs</Icon>
+                    <Icon className="fa-pull-right">times fa-2f</Icon>
+                </PanelHeading>
                 <p className="panel-tabs">
                     {[StatusEnum.All, StatusEnum.Active, StatusEnum.Completed].map(status =>
                         <a href="/"
