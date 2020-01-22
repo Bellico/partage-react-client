@@ -14,7 +14,7 @@ export class TodoContentType extends React.Component<{ tasks: Task[] }, {
         filterOnStatus: StatusEnum.All
     }
 
-    handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    handleChange = (event) => {
         this.setState({
             taskname: event.currentTarget.value
         });
@@ -39,7 +39,7 @@ export class TodoContentType extends React.Component<{ tasks: Task[] }, {
         }
     }
 
-    changeFilter = (event, status: StatusEnum) => {
+    handlechangeFilter = (event: any, status: StatusEnum) => {
         event.preventDefault();
 
         this.setState({
@@ -76,9 +76,9 @@ export class TodoContentType extends React.Component<{ tasks: Task[] }, {
                 <p className="panel-tabs">
                     {[StatusEnum.All, StatusEnum.Active, StatusEnum.Completed].map(status =>
                         <a href="/"
-                            className={this.state.filterOnStatus === status ? 'is-active' : null}
+                            className={this.state.filterOnStatus === status ? 'is-active' : undefined}
                             key={status}
-                            onClick={(event) => this.changeFilter(event, status)}>
+                            onClick={(event) => this.handlechangeFilter(event, status)}>
                             {status}
                         </a>)
                     }
@@ -107,7 +107,7 @@ export class TodoContentType extends React.Component<{ tasks: Task[] }, {
                                 <i className="fa fa-check"></i>
                             </span>
                         </label>
-                        <span style={task.done ? { 'textDecoration': 'line-through' } : null}>
+                        <span style={task.done ? { 'textDecoration': 'line-through' } : undefined}>
                             {task.label}
                         </span>
                         <Icon className="fa-pull-right"
