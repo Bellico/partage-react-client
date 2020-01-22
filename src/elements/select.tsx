@@ -2,6 +2,15 @@ import React from 'react';
 import { Icon } from 'elements/icon';
 import { capitalize } from 'lodash-es';
 
+type SelectProps = {
+    options: OptionModel[],
+    onChange: (value: any) => void,
+    label: string
+    value?: any,
+    icon?: string
+    style?: { color?: string, size?: string }
+}
+
 export class OptionModel {
     key: any;
     value: string
@@ -16,15 +25,7 @@ export class OptionModel {
     }
 }
 
-export class Select extends React.Component<{
-    options: OptionModel[],
-    onChange: (value: any) => void,
-    label: string
-    value?: any,
-    icon?: string
-    style?: { color?: string, size?: string }
-},
-    { value: any }> {
+export class Select extends React.Component<SelectProps, { value: any }> {
 
     state = { value: this.props.value };
 

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Icon } from 'elements/icon';
 import { Task, StatusEnum } from './task.model';
 
-export class TodoContentType extends React.Component<{ tasks: Task[] }, {
+interface ITodoProps {
+    tasks: Task[]
+}
+
+interface ITodoState {
     tasks: Task[],
     taskname: string,
     filterOnStatus: StatusEnum
-}>{
+}
+
+export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
 
     state = {
         tasks: this.props.tasks,
@@ -14,7 +20,7 @@ export class TodoContentType extends React.Component<{ tasks: Task[] }, {
         filterOnStatus: StatusEnum.All
     }
 
-    handleChange = (event) => {
+    handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             taskname: event.currentTarget.value
         });
@@ -28,7 +34,7 @@ export class TodoContentType extends React.Component<{ tasks: Task[] }, {
         });
     }
 
-    handleKeyUp = (event) => {
+    handleKeyUp = (event: any) => {
         const { value } = event.target;
 
         if (event.keyCode === 13 && value !== '') {

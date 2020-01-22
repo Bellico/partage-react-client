@@ -23,7 +23,7 @@ export class PictureContentType extends React.Component {
                     </div>
 
                     <div className="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.Phasellus nec iaculis mauris.
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
-export class ContentTypeModel {
-
-  id: number = 0;
+export type ContentTypeModel = {
+  id: number;
   colorName: string;
   size: string
   typeName: string;

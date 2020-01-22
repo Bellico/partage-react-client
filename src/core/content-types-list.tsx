@@ -10,7 +10,8 @@ import { ContentTypeContext } from 'context/content-type.context';
 export class ContentTypesList extends React.Component<{}, { configurationDisplayedFor: number[] }> {
 
     static contextType = ContentTypeContext;
-    context: React.ContextType<typeof ContentTypeContext>;
+    context!: React.ContextType<typeof ContentTypeContext>;
+
     state = {
         configurationDisplayedFor: [],
     }
@@ -42,8 +43,10 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
                 return { configurationDisplayedFor: state.configurationDisplayedFor }
             });
         } else {
-            this.setState({
-                configurationDisplayedFor: this.state.configurationDisplayedFor.concat(indexItem)
+            this.setState(state => {
+                state.configurationDisplayedFor.push(indexItem);
+
+                return { configurationDisplayedFor: state.configurationDisplayedFor }
             });
         }
     }

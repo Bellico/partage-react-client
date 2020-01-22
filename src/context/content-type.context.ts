@@ -9,7 +9,7 @@ export interface IContentTypeContext {
 
     deleteItem(indexItem: number): void;
 
-    changePropertyItem(indexItem: number, propertyName: string, valueName: string);
+    changePropertyItem(indexItem: number, propertyName: string, valueName: string): void;
 
 }
 

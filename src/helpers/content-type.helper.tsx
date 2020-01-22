@@ -9,7 +9,7 @@ import { CarouselContentType } from 'content-types/carousel-content-type/carouse
 export function getContentTypeByTypeName(typeName: string, value: any) {
     switch (typeName) {
         case 'note':
-            return <NoteContentType value={value} />;
+            return <NoteContentType note={value} />;
         case 'todo':
             return <TodoContentType tasks={[]} />;
         case 'picture':

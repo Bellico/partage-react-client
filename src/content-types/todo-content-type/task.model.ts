@@ -1,10 +1,10 @@
-export class Todo {
+export type Todo = {
   title?: string;
   status?: StatusEnum;
   tasks: Task[];
 }
 
-export class Task {
+export type Task = {
   label: string;
   done: boolean;
 }

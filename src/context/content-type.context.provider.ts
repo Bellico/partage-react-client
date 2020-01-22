@@ -3,7 +3,9 @@ import { ContentTypeModel } from 'models/content-type.model';
 
 export class ContentTypeContextProvider implements IContentTypeContext {
 
-    constructor(private _contentTypeItems, private _setContentTypeItems) {
+    constructor(
+        private _contentTypeItems: ContentTypeModel[],
+        private _setContentTypeItems: (value: ContentTypeModel[]) => void) {
     }
 
     get items(): ContentTypeModel[] {
@@ -26,7 +28,7 @@ export class ContentTypeContextProvider implements IContentTypeContext {
     }
 
     changePropertyItem(indexItem: number, propertyName: string, valueName: string) {
-        this._contentTypeItems[indexItem][propertyName] = valueName;
+        (this._contentTypeItems[indexItem] as any)[propertyName] = valueName;
         this._setContentTypeItems([...this._contentTypeItems]);
     }
 }

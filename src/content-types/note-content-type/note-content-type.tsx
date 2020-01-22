@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { debounce } from 'lodash-es';
 
-interface INoteContentTypeValue {
+interface INoteProps {
+    note: INoteState
+}
+
+interface INoteState {
     title: string,
     note: string
 }
 
-export class NoteContentType extends React.Component<{ value: INoteContentTypeValue }, INoteContentTypeValue>
+export class NoteContentType extends React.Component<INoteProps, INoteState>
 {
     emitChangeDebounced = debounce(this.emitChange, 300);
 
-    constructor(props) {
+    constructor(props: INoteProps) {
         super(props);
         this.state = {
-            title: this.props.value?.title,
-            note: this.props.value?.note
+            title: this.props.note?.title,
+            note: this.props.note?.note
         };
     }
 
-    handleChange = (event) => {
+    handleChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         this.emitChangeDebounced(name, value);
     }
