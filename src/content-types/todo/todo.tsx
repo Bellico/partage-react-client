@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { Icon } from 'elements/icon';
-import { Task, StatusEnum } from './task.model';
+import { Task, StatusEnum } from './todo.model';
 
 interface ITodoProps {
     tasks: Task[]

@@ -1,7 +1,7 @@
-import { IContentTypeContext } from 'context/content-type.context';
+import { IAppContext } from 'app-context/app-context';
 import { ContentTypeModel } from 'models/content-type.model';
 
-export class ContentTypeContextProvider implements IContentTypeContext {
+export class AppContextProvider implements IAppContext {
 
     constructor(
         private _contentTypeItems: ContentTypeModel[],

@@ -5,7 +5,7 @@ import { AddingContentSection } from 'core/adding-content-section';
 import { Icon } from 'elements/icon';
 import { Select, OptionModel } from 'elements/select';
 import { NavLink } from 'react-router-dom';
-import { ContentTypeContext } from 'context/content-type.context';
+import { ContentTypeContext } from 'app-context/app-context';
 
 export class ContentTypesList extends React.Component<{}, { configurationDisplayedFor: number[] }> {
 

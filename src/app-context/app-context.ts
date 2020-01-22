@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContentTypeModel } from 'models/content-type.model';
 
-export interface IContentTypeContext {
+export interface IAppContext {
 
     readonly items: ContentTypeModel[];
 
@@ -13,4 +13,4 @@ export interface IContentTypeContext {
 
 }
 
-export const ContentTypeContext = React.createContext<IContentTypeContext>({} as IContentTypeContext);
+export const ContentTypeContext = React.createContext<IAppContext>({} as IAppContext);

@@ -1,61 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Redirect
 } from 'react-router-dom';
-import { HomePage } from 'core/home-page';
-import { ContentTypeFullPage } from 'core/content-type-full-page';
-import { Navbar } from 'core/navbar';
-import { ContentTypeContext } from 'context/content-type.context';
+import { HomePage } from 'layout/home.page';
+import { BoardPage } from 'layout/board.page';
+import { Navbar } from 'layout/navbar';
+import { ContentTypeContext } from 'app-context/app-context';
 import { ContentTypeModel } from 'models/content-type.model';
-import { ContentTypeContextProvider } from 'context/content-type.context.provider';
+import { AppContextProvider } from 'app-context/app-context.provider';
+import { defaultValues } from 'models/default-values';
 
 export const App = () => {
 
-    const [contentTypeItems, setContentTypeItems] = useState<ContentTypeModel[]>([]);
-    const provider = new ContentTypeContextProvider(contentTypeItems, setContentTypeItems);
-
-    useEffect(() => {
-        setContentTypeItems([
-            {
-                id: 1,
-                colorName: 'light',
-                typeName: 'todo',
-                size: 'medium',
-                value: { note: 'ok' }
-            },
-            {
-                id: 2,
-                colorName: 'danger',
-                typeName: 'note',
-                size: 'medium',
-                value: null
-            },
-            {
-                id: 3,
-                colorName: 'dark',
-                typeName: 'note',
-                size: 'medium',
-                value: null
-            },
-            {
-                id: 4,
-                colorName: 'black',
-                typeName: 'todo',
-                size: 'medium',
-                value: null
-            },
-            {
-                id: 5,
-                colorName: 'light',
-                typeName: 'link',
-                size: 'medium',
-                value: null
-            }
-        ]);
-    }, []);
+    const [contentTypeItems, setContentTypeItems] = useState<ContentTypeModel[]>(defaultValues);
+    const provider = new AppContextProvider(contentTypeItems, setContentTypeItems);
 
     return (
         < Router >
@@ -68,7 +29,7 @@ export const App = () => {
                 </Route>
 
                 <Route path="/hello/:id">
-                    <ContentTypeFullPage />
+                    <BoardPage />
                 </Route>
 
                 <Redirect to="/" />

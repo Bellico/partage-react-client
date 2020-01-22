@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { Menu } from './menu';
-import { TodoBlocks } from 'content-types/todo-content-type/todo-blocks';
+import { TodoGroup } from 'content-types/todo/todo-group';
 
 const WorkContainer = styled.div`
     background: #f4f6f8;
-    min-height: 100vh;     
+    min-height: 100vh;
     display: flex;
     color: #333;
 
@@ -15,11 +15,11 @@ const WorkContainer = styled.div`
     }
 `;
 
-export const ContentTypeFullPage: FunctionComponent = () => (
+export const BoardPage: FunctionComponent = () => (
     <WorkContainer>
         <Menu />
         <main>
-            <TodoBlocks />
+            <TodoGroup />
         </main>
     </WorkContainer>
 )

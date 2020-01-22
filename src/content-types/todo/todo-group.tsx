@@ -1,7 +1,7 @@
 import { FunctionComponent, useState, MouseEventHandler } from "react";
 import React from "react";
-import { TodoContentType } from "./todo-content-type";
-import { Todo } from "./task.model";
+import { TodoContentType } from "./todo";
+import { Todo } from "./todo.model";
 
 const todosDefault: Todo[] = [
   { tasks: [{ label: 'oui', done: false }, { label: 'oui 1', done: false }] },
@@ -13,7 +13,7 @@ const todosDefault: Todo[] = [
 
 const columnsNumber = 3;
 
-export const TodoBlocks: FunctionComponent = () => {
+export const TodoGroup: FunctionComponent = () => {
 
   const [todos, setTodos] = useState<Todo[]>(todosDefault);
 
@@ -39,22 +39,22 @@ const TodosLines: FunctionComponent<{ todos: Todo[], addNewTodo: MouseEventHandl
   const maxLine = Math.ceil(todos.length / columnsNumber);
 
   for (let line = 0; line < maxLine; line++) {
-    todosLines.push(<LineOfTodos key={line} todos={todos} lineNumber={line} addNewTodo={addNewTodo} />);
+    todosLines.push(<TodosLine key={line} todos={todos} lineNumber={line} addNewTodo={addNewTodo} />);
   }
 
   if (todos.length % columnsNumber === 0 && todos.length < 9) {
     todosLines.push(
       <div key={todos.length} className="columns">
-        <NewTodoBlock addNewTodo={addNewTodo} />
+        <NewTodo addNewTodo={addNewTodo} />
       </div>)
   }
 
   return <>{todosLines}</>;
 }
 
-const LineOfTodos: FunctionComponent<{ todos: Todo[], lineNumber: number, addNewTodo: MouseEventHandler }> = ({ todos, lineNumber, addNewTodo }) => {
+const TodosLine: FunctionComponent<{ todos: Todo[], lineNumber: number, addNewTodo: MouseEventHandler }> = ({ todos, lineNumber, addNewTodo }) => {
 
-  function getTodoLine(lineNumber :number) {
+  function getTodoLine(lineNumber: number) {
     const deb = lineNumber * columnsNumber;
 
     if (deb + 2 < todos.length) {
@@ -77,7 +77,7 @@ const LineOfTodos: FunctionComponent<{ todos: Todo[], lineNumber: number, addNew
   )
 
   if (todosOnTheLine.length < columnsNumber) {
-    line.push(<NewTodoBlock key={todos.length} addNewTodo={addNewTodo} />);
+    line.push(<NewTodo key={todos.length} addNewTodo={addNewTodo} />);
   }
 
   return (
@@ -87,7 +87,7 @@ const LineOfTodos: FunctionComponent<{ todos: Todo[], lineNumber: number, addNew
   );
 }
 
-const NewTodoBlock: FunctionComponent<{ addNewTodo: MouseEventHandler }> = ({ addNewTodo }) => (
+const NewTodo: FunctionComponent<{ addNewTodo: MouseEventHandler }> = ({ addNewTodo }) => (
   <div className="column">
     <div className="addTodo" onClick={addNewTodo}>
       X
