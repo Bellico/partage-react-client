@@ -55,7 +55,9 @@ export class Select extends React.Component<SelectProps, { value: any }> {
                 <div className={`control ${this.props.icon ? 'has-icons-left' : ''}`}>
                     <div className={`select ${this.style}`}>
                         <select value={this.props.value} onChange={this.handleChange}>
-                            {this.props.options.map(o => <option key={o.key} value={o.key}>{o.value}</option>)}
+                            {this.props.options.map(o =>
+                                <option key={o.key} value={o.key}>{o.value}</option>
+                            )}
                         </select>
                     </div>
                     {this.icon}
