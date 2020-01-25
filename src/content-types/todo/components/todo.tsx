@@ -1,10 +1,11 @@
 import React, { ChangeEvent } from 'react';
 import { Icon } from 'elements/icon';
-import { Task, StatusEnum } from './todo.model';
+import { Task, StatusEnum, Todo } from '../todo.model';
 import styled from 'styled-components';
 
 interface ITodoProps {
-    tasks: Task[]
+    todo: Todo,
+    onDelete?: () => void;
 }
 
 interface ITodoState {
@@ -20,8 +21,8 @@ const PanelHeading = styled.div`
 export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
 
     state = {
-        tasks: this.props.tasks,
-        taskname: '',
+        tasks: this.props.todo.tasks,
+        taskname: this.props.todo.title || 'Todos List',
         filterOnStatus: StatusEnum.All
     }
 
@@ -81,9 +82,13 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
         return (
             <article className="panel">
                 <PanelHeading className="panel-heading">
-                    Todos List
+                    {this.state.taskname}
                     <Icon>pen fa-xs</Icon>
-                    <Icon className="fa-pull-right">times fa-2f</Icon>
+
+                    <Icon isAction
+                        className="fa-pull-right"
+                        onClick={this.props.onDelete}>
+                        times fa-2f</Icon>
                 </PanelHeading>
                 <p className="panel-tabs">
                     {[StatusEnum.All, StatusEnum.Active, StatusEnum.Completed].map(status =>

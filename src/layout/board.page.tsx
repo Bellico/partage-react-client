@@ -1,8 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Menu } from './menu';
-import { TodoGroup } from 'content-types/todo/todo-group';
-import { Modal } from 'core/modal';
+import { TodoGroup } from 'content-types/todo/components/todo-group';
 
 const WorkContainer = styled.div`
     background: #f4f6f8;
@@ -20,7 +19,6 @@ export const BoardPage = () => (
     <WorkContainer>
         <Menu />
         <main>
-            <Modal>Hello</Modal>
             <TodoGroup />
         </main>
     </WorkContainer>
