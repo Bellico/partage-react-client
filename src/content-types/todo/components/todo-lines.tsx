@@ -1,13 +1,14 @@
 import React, { FunctionComponent, useContext } from "react";
 import { TodoContentType } from "./todo";
 import { TodoContext } from 'content-types/todo/context/todo-context';
-import { dialogService } from 'services/dialog-confirm.service';
 import { useTodoOnTheLine } from 'content-types/todo/todo.hooks';
 import { fillColumn } from 'helpers/utils';
+import { NewTodo } from 'content-types/todo/components/new-todo';
+import { DialogConfirmService } from 'elements/dialog-confirm';
 
-export const TodosLines: FunctionComponent = ({ children }) => {
+export const TodosLines: FunctionComponent = () => {
 
-    const { state: { todos, columnsNumber } } = useContext(TodoContext);
+    const { state: { todos, columnsNumber }, dispatch } = useContext(TodoContext);
 
     const todosLines = [];
     const maxLine = Math.ceil(todos.length / columnsNumber);
@@ -15,7 +16,7 @@ export const TodosLines: FunctionComponent = ({ children }) => {
     for (let line = 0; line < maxLine; line++) {
         todosLines.push(
             <TodosLine key={line} lineNumber={line}>
-                {children}
+                <NewTodo addNewTodo={() => dispatch({ type: 'addTodo' })} />
             </TodosLine>);
     }
 
@@ -23,7 +24,7 @@ export const TodosLines: FunctionComponent = ({ children }) => {
         todosLines.push(
             <div key={todos.length} className="columns">
                 <div className="column">
-                    {children}
+                    <NewTodo addNewTodo={() => dispatch({ type: 'addTodo' })} />
                 </div>
                 {[...fillColumn(columnsNumber)]}
             </div>)
@@ -32,13 +33,15 @@ export const TodosLines: FunctionComponent = ({ children }) => {
     return <>{todosLines}</>;
 }
 
-const TodosLine: FunctionComponent<{ lineNumber: number }> = ({ children, lineNumber }) => {
+const TodosLine: FunctionComponent<{ lineNumber: number }> = ({ lineNumber }) => {
 
     const { state: { todos, columnsNumber }, dispatch } = useContext(TodoContext);
     const todosOnTheLine = useTodoOnTheLine(lineNumber);
 
     async function deleteTodo(index: number) {
-        if (await dialogService().show()) {
+        const data = await new DialogConfirmService().show();
+
+        if (data.confirm) {
             dispatch({ type: "deleteTodo", indexTodo: index });
         }
     }
@@ -46,7 +49,7 @@ const TodosLine: FunctionComponent<{ lineNumber: number }> = ({ children, lineNu
     const line = todosOnTheLine.map((todo) => {
         const index = todos.indexOf(todo);
         return (
-            <div key={index} className="column">
+            <div key={todo.id} className="column">
                 <TodoContentType todo={todo} onDelete={() => deleteTodo(index)} />
             </div>
         )
@@ -54,8 +57,8 @@ const TodosLine: FunctionComponent<{ lineNumber: number }> = ({ children, lineNu
 
     if (todosOnTheLine.length < columnsNumber) {
         line.push(
-            <div className="column">
-                {children}
+            <div key={todos.length} className="column">
+                <NewTodo addNewTodo={() => dispatch({ type: 'addTodo' })} />
             </div>,
             ...fillColumn(columnsNumber - todosOnTheLine.length));
     }

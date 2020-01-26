@@ -8791,7 +8791,7 @@ a.list-item {
 .modal-card-head,
 .modal-card-foot {
   align-items: center;
-  background-color: whitesmoke;
+  background-color: #fff;
   display: flex;
   flex-shrink: 0;
   justify-content: flex-start;
@@ -8799,7 +8799,7 @@ a.list-item {
   position: relative; }
 
 .modal-card-head {
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 0;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px; }
 
@@ -8813,7 +8813,7 @@ a.list-item {
 .modal-card-foot {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  border-top: 1px solid #dbdbdb; }
+  border-top: 0; }
   .modal-card-foot .button:not(:last-child) {
     margin-right: 0.5em; }
 

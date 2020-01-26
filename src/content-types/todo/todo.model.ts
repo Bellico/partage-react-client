@@ -2,6 +2,7 @@ export type Todo = {
   title?: string;
   status?: StatusEnum;
   tasks: Task[];
+  id?: number
 }
 
 export type Task = {

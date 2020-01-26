@@ -1,16 +1,18 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { Icon } from 'elements/icon';
 import { Task, StatusEnum, Todo } from '../todo.model';
 import styled from 'styled-components';
 
+import { DialogInputService } from 'elements/dialog-input';
+
 interface ITodoProps {
     todo: Todo,
+    onChange?: () => void;
     onDelete?: () => void;
 }
 
 interface ITodoState {
     tasks: Task[],
-    taskname: string,
     filterOnStatus: StatusEnum
 }
 
@@ -22,14 +24,7 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
 
     state = {
         tasks: this.props.todo.tasks,
-        taskname: this.props.todo.title || 'Todos List',
         filterOnStatus: StatusEnum.All
-    }
-
-    handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            taskname: event.currentTarget.value
-        });
     }
 
     handleCheckboxChange = (index: number) => {
@@ -46,12 +41,12 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
         if (event.keyCode === 13 && value !== '') {
             this.setState({
                 tasks: [...this.state.tasks, { label: value, done: false }],
-                taskname: ''
             });
+            event.target.value = '';
         }
     }
 
-    handlechangeFilter = (event: any, status: StatusEnum) => {
+    handlechangeFilter = (event: React.MouseEvent<HTMLElement>, status: StatusEnum) => {
         event.preventDefault();
 
         this.setState({
@@ -59,11 +54,34 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
         });
     }
 
+    handleChangeTitle = async () => {
+        const value = await new DialogInputService({
+            textTitle: 'Change title',
+            textCancel: 'Cancel',
+            value: this.props.todo.title || 'Todos List'
+        }).show();
+
+        console.log(value);
+    }
+
     deleteTask = (index: number) => {
         this.state.tasks.splice(index, 1);
         this.setState({
             tasks: [...this.state.tasks]
         });
+    }
+
+    get inputChangeTitle() {
+        return (
+            <div className="field">
+                <div className="control">
+                    <input className="input is-medium"
+                        type="text"
+                        placeholder="Todo's tile"
+                        defaultValue={this.props.todo.title || 'Todos List'} />
+                </div>
+            </div>
+        )
     }
 
     get tasks() {
@@ -82,8 +100,10 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
         return (
             <article className="panel">
                 <PanelHeading className="panel-heading">
-                    {this.state.taskname}
-                    <Icon>pen fa-xs</Icon>
+                    {this.props.todo.title || 'Todos List'}
+                    <Icon isAction
+                        onClick={this.handleChangeTitle}>
+                        pen fa-xs</Icon>
 
                     <Icon isAction
                         className="fa-pull-right"
@@ -107,8 +127,6 @@ export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
                             type="text"
                             placeholder="What's need to be done?"
                             name="taskname"
-                            value={this.state.taskname}
-                            onChange={this.handleChange}
                             onKeyUp={this.handleKeyUp} />
                         <Icon className="is-left">tasks</Icon>
                     </p>
