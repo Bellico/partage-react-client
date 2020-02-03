@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import { DialogService } from 'services/dialog.service';
 
-export type DialogConfirmProps<T = { confirm: boolean }> = {
+export type ConfirmDialogProps<T = { confirm: boolean }> = {
     textConfirm?: string,
     textCancel?: string,
     textTitle?: string,
     onConfirm: (data: T) => void;
 }
 
-export const DialogConfirm: FunctionComponent<DialogConfirmProps> = (props) => (
+export const ConfirmDialog: FunctionComponent<ConfirmDialogProps> = (props) => (
     <div className="modal is-active">
         <div className="modal-background" onClick={() => props.onConfirm({ confirm: false })}></div>
         <div className="modal-card">
@@ -32,7 +32,7 @@ export const DialogConfirm: FunctionComponent<DialogConfirmProps> = (props) => (
     </div>
 );
 
-DialogConfirm.defaultProps = {
+ConfirmDialog.defaultProps = {
     textConfirm: "Yes",
     textCancel: "No",
     textTitle: 'Are you sure to continue?'
@@ -44,16 +44,16 @@ export type DialogServiceData = {
     textTitle?: string,
 }
 
-export class DialogConfirmService extends DialogService {
+export class ConfirmDialogService extends DialogService {
 
     constructor(data?: DialogServiceData) {
         super();
 
-        this.setDialog(<DialogConfirm
+        this.setDialog(<ConfirmDialog
             textConfirm={data?.textConfirm}
             textCancel={data?.textCancel}
             textTitle={data?.textTitle}
             onConfirm={(value) => this.confirm(value)}>
-        </DialogConfirm>);
+        </ConfirmDialog>);
     }
 }

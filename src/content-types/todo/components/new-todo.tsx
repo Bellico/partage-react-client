@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 const NewTodoBlock = styled.nav`
-    background : #5fca91;
+    background : #b2b2b2;
     cursor: pointer;
     height: 9.5em;
     display: flex;

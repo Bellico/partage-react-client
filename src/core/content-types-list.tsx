@@ -2,7 +2,7 @@ import React from 'react';
 import { getContentTypeByTypeName } from 'helpers/content-type.helper';
 import { ContentTypeModel } from 'models/content-type.model';
 import { AddingContentSection } from 'core/adding-content-section';
-import { Icon } from 'elements/icon';
+import { IconButton } from 'elements/icon';
 import { Select, OptionModel } from 'elements/select';
 import { NavLink } from 'react-router-dom';
 import { ContentTypeContext } from 'app-context/app-context';
@@ -64,19 +64,13 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
             <div className="container">
                 <div className="level is-mobile">
                     <div className="level-item">
-                        <Icon
-                            className="is-medium"
-                            isAction
-                            onClick={() => this.toggleConfigurationDisplayedFor(index)}>cogs fa-2x</Icon>
+                        <IconButton onClick={() => this.toggleConfigurationDisplayedFor(index)}>cogs fa-2x</IconButton>
 
-                        <NavLink to="/hello/1" style={{ color: 'inherit' }}>
-                            <Icon className="is-medium">expand fa-2x</Icon>
+                        <NavLink to="/board/1/content/1" style={{ color: 'inherit' }}>
+                            <IconButton>expand fa-2x</IconButton>
                         </NavLink>
 
-                        <Icon
-                            className="is-medium"
-                            isAction
-                            onClick={() => this.deleteContentTypeItem(index)}>trash-alt fa-2x</Icon>
+                        <IconButton onClick={() => this.deleteContentTypeItem(index)}>trash-alt fa-2x</IconButton>
                     </div>
                 </div>
 

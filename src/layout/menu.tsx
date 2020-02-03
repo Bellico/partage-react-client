@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Nav = styled.nav`
   background: #181818;
   padding: 0.5em;
+  width: 15rem;
 
   a{
     color: #fff;

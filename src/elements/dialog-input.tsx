@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
-import { DialogConfirm, DialogConfirmProps, DialogServiceData } from 'elements/dialog-confirm';
+import { ConfirmDialog, ConfirmDialogProps, DialogServiceData } from 'elements/confirm-dialog';
 import { DialogService } from 'services/dialog.service';
 
-type DialogInputProps = DialogConfirmProps<{ value?: string, confirm: boolean }> & {
+type DialogInputProps = ConfirmDialogProps<{ value?: string, confirm: boolean }> & {
     value?: string
 }
 
@@ -15,7 +15,7 @@ export const DialogInput: FunctionComponent<DialogInputProps> = (props) => {
     }
 
     return (
-        <DialogConfirm
+        <ConfirmDialog
             textConfirm={props?.textConfirm}
             textCancel={props?.textCancel}
             textTitle={props?.textTitle}
@@ -32,7 +32,7 @@ export const DialogInput: FunctionComponent<DialogInputProps> = (props) => {
                     </div>
                 </div>
             </form>
-        </DialogConfirm>
+        </ConfirmDialog>
     );
 }
 

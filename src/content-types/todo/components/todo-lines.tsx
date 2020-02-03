@@ -4,7 +4,7 @@ import { TodoContext } from 'content-types/todo/context/todo-context';
 import { useTodoOnTheLine } from 'content-types/todo/todo.hooks';
 import { fillColumn } from 'helpers/utils';
 import { NewTodo } from 'content-types/todo/components/new-todo';
-import { DialogConfirmService } from 'elements/dialog-confirm';
+import { ConfirmDialogService } from 'elements/confirm-dialog';
 
 export const TodosLines: FunctionComponent = () => {
 
@@ -39,7 +39,7 @@ const TodosLine: FunctionComponent<{ lineNumber: number }> = ({ lineNumber }) =>
     const todosOnTheLine = useTodoOnTheLine(lineNumber);
 
     async function deleteTodo(index: number) {
-        const data = await new DialogConfirmService().show();
+        const data = await new ConfirmDialogService().show();
 
         if (data.confirm) {
             dispatch({ type: "deleteTodo", indexTodo: index });

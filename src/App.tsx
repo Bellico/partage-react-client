@@ -28,7 +28,7 @@ export const App = () => {
                     </ContentTypeContext.Provider>
                 </Route>
 
-                <Route path="/hello/:id">
+                <Route path="/board/:id/content/:id">
                     <BoardPage />
                 </Route>
 
