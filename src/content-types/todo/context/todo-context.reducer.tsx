@@ -1,9 +1,9 @@
-import { Todo } from 'content-types/todo/todo.model';
+import { TodoModel } from 'content-types/todo/models/todo.model';
 
 export type TodoAction = { type: 'addTodo' } | { type: 'deleteTodo', indexTodo: number };
 
 export type TodoState = {
-    todos: Todo[];
+    todos: TodoModel[];
     columnsNumber: number;
 }
 

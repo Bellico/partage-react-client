@@ -4,7 +4,16 @@ export const defaultValues = [
         colorName: 'light',
         typeName: 'todo',
         size: 'medium',
-        value: { note: 'ok' }
+        value: {
+            todos: [
+                { id: 1, tasks: [{ label: 'oui', done: false }, { label: 'oui 1', done: false }] },
+                { id: 12, tasks: [{ label: 'courir', done: false }, { label: 'courir 1', done: false }] },
+                { id: 13, tasks: [{ label: 'voler', done: false }, { label: 'voler 1', done: false }] },
+                { id: 14, tasks: [{ label: 'nager', done: false }, { label: 'nager 1', done: false }] },
+                { id: 15, tasks: [{ label: 'rendez vous', done: false }, { label: 'rendez vous 1', done: false }] },
+            ],
+            columnsNumber: 3
+        }
     },
     {
         id: 2,

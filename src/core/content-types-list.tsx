@@ -56,7 +56,7 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
     }
 
     getContentType(item: ContentTypeModel) {
-        return getContentTypeByTypeName(item.typeName, item.value)
+        return getContentTypeByTypeName(item.typeName, item.value, { display: 'home' })
     }
 
     getHeaderSection(index: number, item: ContentTypeModel): React.ReactNode {

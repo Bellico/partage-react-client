@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const Nav = styled.nav`
   background: #181818;
@@ -20,26 +21,48 @@ const Nav = styled.nav`
   }
 `;
 
-export const Menu = () => (
+type MenuProps = {
+  projects: {
+    id: number,
+    label: string,
+    contents: {
+      id: number,
+      type: string
+    }[]
+  }[]
+}
+
+export const Menu: FunctionComponent<MenuProps> = ({ projects }) => (
   <Nav className="menu is-hidden-mobile">
     <a className="logo" href="/">
       <img src="/icons/share.svg" alt="share logo" />
     </a>
     <p className="menu-label">Partage</p>
     <ul className="menu-list">
+      <li><a href="/">Home</a></li>
       <li><a href="/">Dashboard</a></li>
-      <li><a href="/">Customers</a></li>
     </ul>
     <p className="menu-label">My Share</p>
-    <ul className="menu-list">
-      <li>
-        <a href="/" className="is-active">New project </a>
-        <ul>
-          <li><a href="/">Todo Content</a></li>
-          <li><a href="/">Text Content</a></li>
-          <li><a href="/">Picture Content</a></li>
+    {
+      projects.map(project =>
+        <ul key={project.id} className="menu-list">
+          <li>
+            <NavLink to={`/board/${project.id}`} className="is-active">
+              {project.label}
+            </NavLink>
+            <ul>
+              {project.contents.map(content =>
+                <li key={content.id}>
+                  <NavLink to={`/board/${project.id}/content/${content.id}`}>
+                    {content.type}
+                  </NavLink>
+                </li>
+              )}
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
+      )
+    }
   </Nav>
 );
+

@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useContext } from "react";
-import { TodoContentType } from "./todo";
 import { TodoContext } from 'content-types/todo/context/todo-context';
-import { useTodoOnTheLine } from 'content-types/todo/todo.hooks';
+import { useTodoOnTheLine } from 'content-types/todo/hooks/todo.hooks';
 import { fillColumn } from 'helpers/utils';
 import { NewTodo } from 'content-types/todo/components/new-todo';
 import { ConfirmDialogService } from 'elements/confirm-dialog';
+import { Todo } from 'content-types/todo/components/todo';
 
 export const TodosLines: FunctionComponent = () => {
 
@@ -50,7 +50,7 @@ const TodosLine: FunctionComponent<{ lineNumber: number }> = ({ lineNumber }) =>
         const index = todos.indexOf(todo);
         return (
             <div key={todo.id} className="column">
-                <TodoContentType todo={todo} onDelete={() => deleteTodo(index)} />
+                <Todo todo={todo} onDelete={() => deleteTodo(index)} />
             </div>
         )
     })

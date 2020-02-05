@@ -1,11 +1,11 @@
-export type Todo = {
+export type TodoModel = {
   title?: string;
   status?: StatusEnum;
-  tasks: Task[];
+  tasks: TaskModel[];
   id?: number
 }
 
-export type Task = {
+export type TaskModel = {
   label: string;
   done: boolean;
 }

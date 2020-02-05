@@ -1,17 +1,18 @@
 import React from 'react';
 
 import { NoteContentType } from 'content-types/note/note';
-import { TodoContentType } from 'content-types/todo/components/todo';
 import { PictureContentType } from 'content-types/picture/picture';
 import { LinkContentType } from 'content-types/link/link';
 import { CarouselContentType } from 'content-types/carousel/carousel';
+import { EnvironnementContent } from 'models/environnement-content.model';
+import { TodoContentType } from 'content-types/todo';
 
-export function getContentTypeByTypeName(typeName: string, value: any) {
+export function getContentTypeByTypeName(typeName: string, value: any, env: EnvironnementContent) {
     switch (typeName) {
         case 'note':
             return <NoteContentType note={value} />;
         case 'todo':
-            return <TodoContentType todo={{ tasks: [] }} />;
+            return <TodoContentType value={value} environnement={env} />;
         case 'picture':
             return <PictureContentType />;
         case 'link':

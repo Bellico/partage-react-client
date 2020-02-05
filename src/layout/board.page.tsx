@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Menu } from './menu';
-import { TodoGroup } from 'content-types/todo/components/todo-group';
+import { defaultValues } from 'models/default-values';
+import { getContentTypeByTypeName } from 'helpers/content-type.helper';
 
 const WorkContainer = styled.div`
     background: #f4f6f8;
@@ -15,11 +16,24 @@ const WorkContainer = styled.div`
     }
 `;
 
+const element = defaultValues[0];
+
+const menuItems = [{
+    id: 1,
+    label: 'My share',
+    contents: [
+        {
+            id: 1,
+            type: 'Todo'
+        }
+    ]
+}]
+
 export const BoardPage = () => (
     <WorkContainer>
-        <Menu />
+        <Menu projects={menuItems} />
         <main>
-            <TodoGroup />
+            {getContentTypeByTypeName(element.typeName, element.value, { display: 'board' })}
         </main>
     </WorkContainer>
 )

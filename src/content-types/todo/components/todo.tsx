@@ -1,18 +1,18 @@
 import React from 'react';
 import { Icon } from 'elements/icon';
-import { Task, StatusEnum, Todo } from '../todo.model';
+import { TaskModel, StatusEnum, TodoModel } from '../models/todo.model';
 import styled from 'styled-components';
 
 import { DialogInputService } from 'elements/dialog-input';
 
 interface ITodoProps {
-    todo: Todo,
+    todo: TodoModel,
     onChange?: () => void;
     onDelete?: () => void;
 }
 
 interface ITodoState {
-    tasks: Task[],
+    tasks: TaskModel[],
     filterOnStatus: StatusEnum
 }
 
@@ -20,7 +20,7 @@ const PanelHeading = styled.div`
     background: #474747;
     color: #fff;
 `
-export class TodoContentType extends React.Component<ITodoProps, ITodoState>{
+export class Todo extends React.Component<ITodoProps, ITodoState>{
 
     state = {
         tasks: this.props.todo.tasks,
