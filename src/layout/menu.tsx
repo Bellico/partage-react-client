@@ -27,7 +27,7 @@ type MenuProps = {
     label: string,
     contents: {
       id: number,
-      type: string
+      typeName: string
     }[]
   }[]
 }
@@ -54,7 +54,7 @@ export const Menu: FunctionComponent<MenuProps> = ({ projects }) => (
               {project.contents.map(content =>
                 <li key={content.id}>
                   <NavLink to={`/board/${project.id}/content/${content.id}`}>
-                    {content.type}
+                    {content.typeName}
                   </NavLink>
                 </li>
               )}

@@ -23,7 +23,7 @@ const PanelHeading = styled.div`
 export class Todo extends React.Component<ITodoProps, ITodoState>{
 
     state = {
-        tasks: this.props.todo.tasks,
+        tasks: this.props.todo?.tasks || [],
         filterOnStatus: StatusEnum.All
     }
 
@@ -58,7 +58,7 @@ export class Todo extends React.Component<ITodoProps, ITodoState>{
         const value = await new DialogInputService({
             textTitle: 'Change title',
             textCancel: 'Cancel',
-            value: this.props.todo.title || 'Todos List'
+            value: this.props.todo?.title || 'Todos List'
         }).show();
 
         console.log(value);
@@ -78,7 +78,7 @@ export class Todo extends React.Component<ITodoProps, ITodoState>{
                     <input className="input is-medium"
                         type="text"
                         placeholder="Todo's tile"
-                        defaultValue={this.props.todo.title || 'Todos List'} />
+                        defaultValue={this.props.todo?.title || 'Todos List'} />
                 </div>
             </div>
         )
@@ -100,7 +100,7 @@ export class Todo extends React.Component<ITodoProps, ITodoState>{
         return (
             <article className="panel">
                 <PanelHeading className="panel-heading">
-                    {this.props.todo.title || 'Todos List'}
+                    {this.props.todo?.title || 'Todos List'}
                     <Icon isAction
                         onClick={this.handleChangeTitle}>
                         pen fa-xs</Icon>

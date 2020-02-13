@@ -1,13 +1,11 @@
-import { TodoModel } from 'content-types/todo/models/todo.model';
+import { TodoContentValueModel } from 'content-types/todo/models/todo.model';
 
-export type TodoAction = { type: 'addTodo' } | { type: 'deleteTodo', indexTodo: number };
+export type TodoAction =
+    { type: 'addTodo' }
+    | { type: 'deleteTodo', indexTodo: number };
 
-export type TodoState = {
-    todos: TodoModel[];
-    columnsNumber: number;
-}
 
-export function todoReducer(state: TodoState, action: TodoAction) {
+export function todoReducer(state: TodoContentValueModel, action: TodoAction) {
     switch (action.type) {
 
         case 'addTodo':
@@ -16,7 +14,7 @@ export function todoReducer(state: TodoState, action: TodoAction) {
             return {
                 ...state,
                 todos: [...state.todos, { id, title: 'new todo', tasks: [{ label: 'oui', done: false }, { label: 'oui 1', done: false }] }]
-            } as TodoState;
+            } as TodoContentValueModel;
 
         case 'deleteTodo':
             state.todos.splice(action.indexTodo, 1);
@@ -24,7 +22,7 @@ export function todoReducer(state: TodoState, action: TodoAction) {
             return {
                 ...state,
                 todos: state.todos
-            } as TodoState
+            } as TodoContentValueModel
 
         default:
             throw new Error();

@@ -1,8 +1,9 @@
 import React, { Dispatch } from 'react';
-import { TodoState, TodoAction } from 'content-types/todo/context/todo-context.reducer';
+import { TodoAction } from 'content-types/todo/context/todo-context.reducer';
+import { TodoContentValueModel } from 'content-types/todo/models/todo.model';
 
 export interface ITodoContext {
-    state: TodoState,
+    state: TodoContentValueModel,
     dispatch: Dispatch<TodoAction>;
 }
 

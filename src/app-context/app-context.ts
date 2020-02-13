@@ -1,5 +1,6 @@
 import React from 'react';
 import { ContentTypeModel } from 'models/content-type.model';
+import { Environnement } from 'models/environnement-content.model';
 
 export interface IAppContext {
 
@@ -14,3 +15,7 @@ export interface IAppContext {
 }
 
 export const ContentTypeContext = React.createContext<IAppContext>({} as IAppContext);
+
+export const EnvContext = React.createContext<Environnement>({ display: 'home' });
+
+export const ContentContext = React.createContext<any>(null);

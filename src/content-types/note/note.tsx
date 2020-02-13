@@ -1,5 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useContext } from 'react';
 import { debounce } from 'lodash-es';
+import { ContentContext } from 'app-context/app-context';
 
 interface INoteProps {
     note: INoteState
@@ -10,7 +11,14 @@ interface INoteState {
     note: string
 }
 
-export class NoteContentType extends React.Component<INoteProps, INoteState>
+export const NoteContentType = () => {
+
+    const value = useContext<INoteState>(ContentContext);
+
+    return <Note note={value} />;
+}
+
+class Note extends React.Component<INoteProps, INoteState>
 {
     emitChangeDebounced = debounce(this.emitChange, 300);
 

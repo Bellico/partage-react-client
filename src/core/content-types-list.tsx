@@ -5,7 +5,7 @@ import { AddingContentSection } from 'core/adding-content-section';
 import { IconButton } from 'elements/icon';
 import { Select, OptionModel } from 'elements/select';
 import { NavLink } from 'react-router-dom';
-import { ContentTypeContext } from 'app-context/app-context';
+import { ContentTypeContext, ContentContext } from 'app-context/app-context';
 
 export class ContentTypesList extends React.Component<{}, { configurationDisplayedFor: number[] }> {
 
@@ -56,7 +56,7 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
     }
 
     getContentType(item: ContentTypeModel) {
-        return getContentTypeByTypeName(item.typeName, item.value, { display: 'home' })
+        return getContentTypeByTypeName(item.typeName, item.value)
     }
 
     getHeaderSection(index: number, item: ContentTypeModel): React.ReactNode {
@@ -122,7 +122,9 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
                         </div>
                         <div className="hero-body">
                             <div className="container">
-                                {this.getContentType(contentType)}
+                                <ContentContext.Provider value={contentType.value} >
+                                    {this.getContentType(contentType)}
+                                </ContentContext.Provider>
                             </div>
                         </div>
                     </section>)

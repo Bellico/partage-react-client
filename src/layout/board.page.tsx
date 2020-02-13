@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Menu } from './menu';
 import { defaultValues } from 'models/default-values';
 import { getContentTypeByTypeName } from 'helpers/content-type.helper';
+import { useParams } from 'react-router-dom';
+import { ContentContext } from 'app-context/app-context';
 
 const WorkContainer = styled.div`
     background: #f4f6f8;
@@ -16,24 +18,32 @@ const WorkContainer = styled.div`
     }
 `;
 
-const element = defaultValues[0];
 
 const menuItems = [{
     id: 1,
     label: 'My share',
-    contents: [
-        {
-            id: 1,
-            type: 'Todo'
-        }
-    ]
+    contents: defaultValues.map(d => ({ id: d.id, typeName: d.typeName }))
 }]
 
-export const BoardPage = () => (
-    <WorkContainer>
-        <Menu projects={menuItems} />
-        <main>
-            {getContentTypeByTypeName(element.typeName, element.value, { display: 'board' })}
-        </main>
-    </WorkContainer>
-)
+export const BoardPage = () => {
+
+    const { boardId, contentId } = useParams();
+
+    const board = menuItems.find(b => b.id === +(boardId || 0));
+    let content = null;
+
+    if (contentId) {
+        content = defaultValues.find(d => d.id === +contentId);
+    }
+
+    return (
+        <WorkContainer>
+            <Menu projects={menuItems} />
+            {content && <main key={content.id}>
+                <ContentContext.Provider value={content.value} >
+                    {getContentTypeByTypeName(content.typeName, content.value)}
+                </ContentContext.Provider>
+            </main>}
+        </WorkContainer>
+    );
+}

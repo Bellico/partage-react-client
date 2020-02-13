@@ -9,7 +9,6 @@ import { Todo } from 'content-types/todo/components/todo';
 export const TodosLines: FunctionComponent = () => {
 
     const { state: { todos, columnsNumber }, dispatch } = useContext(TodoContext);
-
     const todosLines = [];
     const maxLine = Math.ceil(todos.length / columnsNumber);
 

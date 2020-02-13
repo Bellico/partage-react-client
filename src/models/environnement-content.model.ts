@@ -1,3 +1,3 @@
-export type EnvironnementContent = {
+export type Environnement = {
     display: 'home' | 'board'
 }

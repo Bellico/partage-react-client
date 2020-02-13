@@ -15,3 +15,9 @@ export enum StatusEnum {
   Active = 'Active',
   Completed = 'Completed'
 };
+
+
+export type TodoContentValueModel = {
+  todos: TodoModel[];
+  columnsNumber: number;
+}

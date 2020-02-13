@@ -6,7 +6,7 @@ export const defaultValues = [
         size: 'medium',
         value: {
             todos: [
-                { id: 1, tasks: [{ label: 'oui', done: false }, { label: 'oui 1', done: false }] },
+                { id: 1, title: 'mon todo', tasks: [{ label: 'oui', done: false }, { label: 'oui 1', done: false }] },
                 { id: 12, tasks: [{ label: 'courir', done: false }, { label: 'courir 1', done: false }] },
                 { id: 13, tasks: [{ label: 'voler', done: false }, { label: 'voler 1', done: false }] },
                 { id: 14, tasks: [{ label: 'nager', done: false }, { label: 'nager 1', done: false }] },
@@ -27,14 +27,20 @@ export const defaultValues = [
         colorName: 'dark',
         typeName: 'note',
         size: 'medium',
-        value: null
+        value: {
+            title: 'hello',
+            note: 'note2'
+        }
     },
     {
         id: 4,
         colorName: 'black',
         typeName: 'todo',
         size: 'medium',
-        value: null
+        value: {
+            todos: [],
+            columnsNumber: 1
+        }
     },
     {
         id: 5,
