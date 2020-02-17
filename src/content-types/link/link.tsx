@@ -13,7 +13,7 @@ export class LinkContentType extends React.Component {
                         <form>
                             <div className="field is-grouped">
                                 <div className="control has-icons-left is-expanded">
-                                    <input type="email" name="email" className="input is-medium" placeholder="link address" required />
+                                    <input type="text" name="link" className="input is-medium" placeholder="link address" required />
                                     <span className="icon is-left">
                                         <i className="fas fa-external-link-alt"></i>
                                     </span>

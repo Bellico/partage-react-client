@@ -17,11 +17,17 @@ export const defaultValues = [
     },
     {
         id: 2,
-        colorName: 'danger',
-        typeName: 'note',
+        colorName: 'black',
+        typeName: 'todo',
         size: 'medium',
-        value: null
+        value: {
+            todos: [],
+            columnsNumber: 1
+        }
     },
+
+
+    // Note
     {
         id: 3,
         colorName: 'dark',
@@ -34,18 +40,80 @@ export const defaultValues = [
     },
     {
         id: 4,
-        colorName: 'black',
-        typeName: 'todo',
+        colorName: 'danger',
+        typeName: 'note',
         size: 'medium',
-        value: {
-            todos: [],
-            columnsNumber: 1
-        }
+        value: null
     },
+
+
+    // Link
     {
         id: 5,
         colorName: 'light',
         typeName: 'link',
+        size: 'medium',
+        value: null
+    },
+    {
+        id: 6,
+        colorName: 'light',
+        typeName: 'link',
+        size: 'medium',
+        value: 'www.google.fr'
+    },
+
+    // Picture
+    {
+        id: 7,
+        colorName: 'light',
+        typeName: 'picture',
+        size: 'medium',
+        value: {
+            url: 'https://picsum.photos/200/300'
+        }
+    },
+    {
+        id: 8,
+        colorName: 'light',
+        typeName: 'picture',
+        size: 'medium',
+        value: {
+            url: 'https://images6.alphacoders.com/405/405481.jpg'
+        }
+    },
+    {
+        id: 88,
+        colorName: 'light',
+        typeName: 'picture',
+        size: 'medium',
+        value: {
+            url: 'https://i.picsum.photos/id/399/760/500.jpg?grayscale'
+        }
+    },
+    {
+        id: 888,
+        colorName: 'light',
+        typeName: 'picture',
+        size: 'medium',
+        value: {
+
+        }
+    },
+
+
+    // Carrousel
+    {
+        id: 9,
+        colorName: 'light',
+        typeName: 'carousel',
+        size: 'medium',
+        value: null
+    },
+    {
+        id: 10,
+        colorName: 'light',
+        typeName: 'carousel',
         size: 'medium',
         value: null
     }

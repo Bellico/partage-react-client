@@ -66,7 +66,7 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
                     <div className="level-item">
                         <IconButton onClick={() => this.toggleConfigurationDisplayedFor(index)}>cogs fa-2x</IconButton>
 
-                        <NavLink to="/board/1/content/1" style={{ color: 'inherit' }}>
+                        <NavLink to={`/board/1/content/${item.id}`} style={{ color: 'inherit' }}>
                             <IconButton>expand fa-2x</IconButton>
                         </NavLink>
 
@@ -116,7 +116,7 @@ export class ContentTypesList extends React.Component<{}, { configurationDisplay
         return (
             <main>
                 {this.contentTypeItems.map((contentType, index) =>
-                    <section key={index} className={`section hero is-${contentType.size} is-${contentType.colorName}`}>
+                    <section key={contentType.id} className={`section hero is-${contentType.size} is-${contentType.colorName}`}>
                         <div className="hero-head">
                             {this.getHeaderSection(index, contentType)}
                         </div>

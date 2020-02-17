@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useContext } from 'react';
 import { debounce } from 'lodash-es';
 import { ContentContext } from 'app-context/app-context';
+import styled from 'styled-components';
 
 interface INoteProps {
     note: INoteState
@@ -10,6 +11,45 @@ interface INoteState {
     title: string,
     note: string
 }
+
+const NoteOptions = styled.div`
+    background: #3273dc;
+    height: 3.5em;
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    .note-option{
+        font-weight: bold;
+        margin: 0 0.8em;
+    }
+
+    .bold{
+    }
+
+    .underline{
+        text-decoration: underline
+    }
+
+    .italic{
+        font-style: italic;
+    }
+`;
+
+const NoteStyled = styled.textarea`
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 2px 0px #42424242;
+    border: none;
+
+    &:focus{
+        border:  none;
+        box-shadow: 0 2px 2px 0px #42424242;
+    }
+`;
 
 export const NoteContentType = () => {
 
@@ -65,13 +105,18 @@ class Note extends React.Component<INoteProps, INoteState>
                 <div className="field">
                     <label className="label">Note</label>
                     <div className="control">
-                        <textarea
-                            className="textarea is-large"
+                        <NoteOptions>
+                            <span className="bold note-option">B</span>
+                            <span className="underline note-option">U</span>
+                            <span className="italic note-option">I</span>
+                        </NoteOptions>
+                        <NoteStyled
+                            className="textarea is-large note"
                             placeholder="Enter a note"
                             name="note"
                             defaultValue={this.state.note}
                             onChange={this.handleChange}>
-                        </textarea>
+                        </NoteStyled>
                     </div>
                 </div>
             </form>

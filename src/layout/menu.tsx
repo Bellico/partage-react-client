@@ -22,7 +22,9 @@ const Nav = styled.nav`
 `;
 
 type MenuProps = {
-  projects: {
+  boardIdSelected?: number,
+  contentIdSelected?: number
+  boards: {
     id: number,
     label: string,
     contents: {
@@ -32,7 +34,7 @@ type MenuProps = {
   }[]
 }
 
-export const Menu: FunctionComponent<MenuProps> = ({ projects }) => (
+export const Menu: FunctionComponent<MenuProps> = ({ boards, boardIdSelected, contentIdSelected }) => (
   <Nav className="menu is-hidden-mobile">
     <a className="logo" href="/">
       <img src="/icons/share.svg" alt="share logo" />
@@ -44,16 +46,20 @@ export const Menu: FunctionComponent<MenuProps> = ({ projects }) => (
     </ul>
     <p className="menu-label">My Share</p>
     {
-      projects.map(project =>
-        <ul key={project.id} className="menu-list">
+      boards.map(board =>
+        <ul key={board.id} className="menu-list">
           <li>
-            <NavLink to={`/board/${project.id}`} className="is-active">
-              {project.label}
+            <NavLink
+              to={`/board/${board.id}`}
+              className={boardIdSelected === board.id ? 'is-active' : ''}>
+              {board.label}
             </NavLink>
             <ul>
-              {project.contents.map(content =>
+              {board.contents.map(content =>
                 <li key={content.id}>
-                  <NavLink to={`/board/${project.id}/content/${content.id}`}>
+                  <NavLink
+                    to={`/board/${board.id}/content/${content.id}`}
+                    className={contentIdSelected === content.id ? 'is-active' : ''}>
                     {content.typeName}
                   </NavLink>
                 </li>

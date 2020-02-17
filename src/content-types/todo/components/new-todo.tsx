@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-const NewTodoBlock = styled.nav`
-    background : #b2b2b2;
+const NewTodoBlock = styled.div`
     cursor: pointer;
-    height: 9.5em;
+    min-height: 9.5em;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center

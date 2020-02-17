@@ -15,6 +15,12 @@ const WorkContainer = styled.div`
     main{
         flex: auto;
         padding: 2em;
+
+        .picture img{
+            max-height: calc(100vh - 150px - 4em);
+            width: auto;
+            margin: auto;
+        }
     }
 `;
 
@@ -30,6 +36,7 @@ export const BoardPage = () => {
     const { boardId, contentId } = useParams();
 
     const board = menuItems.find(b => b.id === +(boardId || 0));
+
     let content = null;
 
     if (contentId) {
@@ -38,7 +45,7 @@ export const BoardPage = () => {
 
     return (
         <WorkContainer>
-            <Menu projects={menuItems} />
+            <Menu boards={menuItems} boardIdSelected={board?.id} contentIdSelected={content?.id} />
             {content && <main key={content.id}>
                 <ContentContext.Provider value={content.value} >
                     {getContentTypeByTypeName(content.typeName, content.value)}
