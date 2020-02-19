@@ -53,14 +53,18 @@ export const defaultValues = [
         colorName: 'light',
         typeName: 'link',
         size: 'medium',
-        value: null
+        value: {
+            link: 'http://localhost:3000/board/1/content/6'
+        }
     },
     {
         id: 6,
         colorName: 'light',
         typeName: 'link',
         size: 'medium',
-        value: 'www.google.fr'
+        value: {
+            link: 'www.google.fr'
+        }
     },
 
     // Picture

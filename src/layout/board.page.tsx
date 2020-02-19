@@ -15,12 +15,6 @@ const WorkContainer = styled.div`
     main{
         flex: auto;
         padding: 2em;
-
-        .picture img{
-            max-height: calc(100vh - 150px - 4em);
-            width: auto;
-            margin: auto;
-        }
     }
 `;
 
